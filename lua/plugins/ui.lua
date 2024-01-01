@@ -10,13 +10,6 @@ return {
       },
     },
   },
-  { "sainnhe/sonokai" },
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "sonokai",
-    },
-  },
   {
     "nvimdev/dashboard-nvim",
     opts = function(_, opts)
@@ -45,5 +38,23 @@ return {
       })
       opts.presets.lsp_doc_border = true
     end,
+  },
+  {
+    "akinsho/bufferline.nvim",
+    opts = {
+      options = {
+        mode = "tabs",
+        show_buffer_close_icons = false,
+        show_close_icon = false,
+      },
+    },
+  },
+  {
+    "nvim-lualine/lualine.nvim",
+    opts = {
+      options = {
+        theme = "solarized_dark",
+      },
+    },
   },
 }
