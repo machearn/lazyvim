@@ -50,14 +50,6 @@ return {
     },
   },
   {
-    "nvim-lualine/lualine.nvim",
-    opts = {
-      options = {
-        theme = "solarized_dark",
-      },
-    },
-  },
-  {
     "folke/which-key.nvim",
     opts = {
       plugins = {
