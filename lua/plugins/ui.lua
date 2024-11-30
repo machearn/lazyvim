@@ -11,9 +11,9 @@ return {
     },
   },
   {
-    "nvimdev/dashboard-nvim",
+    "folke/snacks.nvim",
     opts = function(_, opts)
-      local logo = [[
+      opts.dashboard.preset.header = [[
         ███╗   ███╗ █████╗  ██████╗██╗  ██╗███████╗ █████╗ ██████╗ ███╗   ██╗
         ████╗ ████║██╔══██╗██╔════╝██║  ██║██╔════╝██╔══██╗██╔══██╗████╗  ██║
         ██╔████╔██║███████║██║     ███████║█████╗  ███████║██████╔╝██╔██╗ ██║
@@ -21,9 +21,6 @@ return {
         ██║ ╚═╝ ██║██║  ██║╚██████╗██║  ██║███████╗██║  ██║██║  ██║██║ ╚████║
         ╚═╝     ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝
       ]]
-
-      logo = string.rep("\n", 8) .. logo .. "\n\n"
-      opts.config.header = vim.split(logo, "\n")
     end,
   },
   {
@@ -48,6 +45,31 @@ return {
         show_close_icon = false,
       },
     },
+  },
+  {
+    "nvim-lualine/lualine.nvim",
+    opts = function()
+      local icons = LazyVim.config.icons
+      local opts = {
+        sections = {
+          lualine_c = {
+            LazyVim.lualine.root_dir(),
+            {
+              "diagnostics",
+              symbols = {
+                error = icons.diagnostics.Error,
+                warn = icons.diagnostics.Warn,
+                info = icons.diagnostics.Info,
+                hint = icons.diagnostics.Hint,
+              },
+            },
+            { "filetype", icon_only = true, separator = "", padding = { left = 2, right = 0 } },
+            { LazyVim.lualine.pretty_path() },
+          },
+        },
+      }
+      return opts
+    end,
   },
   {
     "folke/which-key.nvim",
